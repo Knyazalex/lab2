@@ -1,0 +1,60 @@
+#include <iostream> 
+#include <string>
+#include "Header.h"
+using namespace std;
+int main()
+{
+	try
+	{
+		setlocale(LC_ALL, ".1251");
+		string r;
+		int step;
+		cout << "Введите строку" << endl;
+		cin >> r;
+		cout << "Введите сдвиг" << endl;
+		cin >> step;
+		int t;
+		cout << "Что вы хотите сделать: 1.зашифровать или 2.расшифровать?!" << endl;
+		cin >> t;
+		switch (t)
+		{
+		case 1:
+		{
+			CezarCode y(step);
+			cout << y.coder(r) << endl;
+			break;
+		}
+		case 2:
+		{
+			CezarCode y(step);
+			cout << y.decoder(r) << endl;
+			break;
+		}
+		default:
+		{
+			throw 3;
+		}
+		}
+		return 0;
+	}
+	catch (int e)
+	{
+		switch (e)
+		{
+		case 1:
+		{
+			cout << "Ошибка проверки строки";
+			break;
+		}
+		case 2:
+		{
+			cout << "Неверный сдвиг";
+			break;
+		}
+		case 3:
+		{
+			cout << "Ошибка ввода" << endl;
+		}
+		}
+	}
+}
